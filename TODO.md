@@ -84,6 +84,33 @@ Tell me "screenshots ready" with file paths → I'll frame them.
 ## Privacy Policy (required before App Store review)
 
 - [x] Policy generated → `privacy-policy.html` in repo root
-- [x] Host it: pushed to GitHub → Pages enabled → branch: main, folder: /
+- [x] Host it: committed + pushed 2026-07-02, verified live (HTTP 200)
   - URL: `https://omegagiven.github.io/OG-fulfillment/privacy-policy.html`
   - [ ] Add that URL to App Store Connect → App Information → Privacy Policy URL
+  - [ ] Add it to TestFlight → Test Information (required for external beta review)
+  - [ ] Add it to Play Console → Store listing
+
+---
+
+## Beta Launch Path (public-ish beta, minimal gates)
+
+**Android reality check:** personal Play account (created after Nov 2023) → open testing
+and production are LOCKED until a closed test runs with **12+ opted-in testers for 14
+consecutive days**. Closed testing IS the public beta — share the opt-in link.
+`eas.json` now submits production builds to the `alpha` (closed) track.
+
+- [ ] Play Console pre-review setup (required before closed test goes live):
+  - [ ] Store listing (short + full description, icon, feature graphic, screenshots)
+  - [ ] Content rating questionnaire
+  - [ ] Data safety form (declare: email for auth, orders/photos user-private, no ads/tracking)
+  - [ ] Target audience + News/COVID declarations
+- [ ] First Android AAB must be uploaded MANUALLY in Play Console (Play API can't create
+      an app's first release; EAS auto-submit works from the second release onward)
+- [ ] Tag `v1.0.0` → pipeline builds both platforms, submits iOS → TestFlight
+- [ ] TestFlight: create External group → enable public link → submit for Beta App Review
+      (~1 day; skips internal group entirely)
+- [ ] Recruit 12+ closed-track testers, keep them opted in 14 straight days → then apply
+      for production access → open testing / production unlock
+
+**Beta caveat:** Android subscriptions don't exist until merchant account approved —
+paywall shows no offerings on Android; testers use promo code `BETA100` instead.
