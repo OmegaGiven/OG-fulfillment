@@ -5,35 +5,35 @@
 
   <!-- Box: left side, bottom, right side (no top edge) -->
   <polyline
-    points="248,500 248,840 776,840 776,500"
+    points="354,460 354,664 670,664 670,460"
     fill="none"
     stroke="#e2e8f0"
-    stroke-width="58"
+    stroke-width="35"
     stroke-linecap="round"
     stroke-linejoin="round"/>
 
   <!-- Left flap: 45° outward + upward from top of left side -->
   <line
-    x1="248" y1="500"
-    x2="82"  y2="334"
+    x1="354" y1="460"
+    x2="254" y2="360"
     stroke="#e2e8f0"
-    stroke-width="58"
+    stroke-width="35"
     stroke-linecap="round"/>
 
   <!-- Right flap: 45° outward + upward from top of right side -->
   <line
-    x1="776" y1="500"
-    x2="942" y2="334"
+    x1="670" y1="460"
+    x2="770" y2="360"
     stroke="#e2e8f0"
-    stroke-width="58"
+    stroke-width="35"
     stroke-linecap="round"/>
 
   <!-- Checkmark: rises from inside the box and out through the top opening -->
   <polyline
-    points="350,620 468,740 700,360"
+    points="415,532 486,604 625,376"
     fill="none"
     stroke="#22c55e"
-    stroke-width="68"
+    stroke-width="41"
     stroke-linecap="round"
     stroke-linejoin="round"/>
 
