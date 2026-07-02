@@ -77,15 +77,32 @@ jobs:
       # iOS → TestFlight (internal). Android → Play Internal Track (draft).
       # OTA updates are NOT pushed here — users get new code only via store
       # review, keeping rollout under your control.
-      - name: Build + Auto-Submit
+      # iOS auto-submits to TestFlight. Android builds WITHOUT auto-submit:
+      # Google Play requires the first release to be uploaded manually through
+      # the Play Console, and eas submit needs the service account key stored
+      # in EAS credentials (not GitHub secrets). Re-enable Android auto-submit
+      # after the first manual upload + `eas credentials` key upload.
+      - name: Build iOS + Auto-Submit to TestFlight
         working-directory: apps/mobile
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           eas build \
-            --platform all \
+            --platform ios \
             --profile production \
             --auto-submit \
+            --non-interactive \
+            --no-wait \
+            --message "Release ${{ steps.version.outputs.TAG }}"
+
+      - name: Build Android (manual submit for now)
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          eas build \
+            --platform android \
+            --profile production \
             --non-interactive \
             --no-wait \
             --message "Release ${{ steps.version.outputs.TAG }}"
